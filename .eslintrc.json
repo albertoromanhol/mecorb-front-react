@@ -33,6 +33,10 @@
             "error",
             "single"
         ],
+        "semi": [
+            2,
+            "always"
+        ],
         "react/prop-types": "off",
         "react/no-children-prop": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off"
