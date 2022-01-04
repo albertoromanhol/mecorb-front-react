@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mecorb-front-react/static/css/main.0a4403dc.chunk.css",
+    "main.css": "/mecorb-front-react/static/css/main.493897be.chunk.css",
     "main.js": "/mecorb-front-react/static/js/main.791af653.chunk.js",
     "main.js.map": "/mecorb-front-react/static/js/main.791af653.chunk.js.map",
     "runtime-main.js": "/mecorb-front-react/static/js/runtime-main.d849f043.js",
@@ -8,13 +8,13 @@
     "static/js/2.0f44f0ce.chunk.js": "/mecorb-front-react/static/js/2.0f44f0ce.chunk.js",
     "static/js/2.0f44f0ce.chunk.js.map": "/mecorb-front-react/static/js/2.0f44f0ce.chunk.js.map",
     "index.html": "/mecorb-front-react/index.html",
-    "static/css/main.0a4403dc.chunk.css.map": "/mecorb-front-react/static/css/main.0a4403dc.chunk.css.map",
+    "static/css/main.493897be.chunk.css.map": "/mecorb-front-react/static/css/main.493897be.chunk.css.map",
     "static/js/2.0f44f0ce.chunk.js.LICENSE.txt": "/mecorb-front-react/static/js/2.0f44f0ce.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d849f043.js",
     "static/js/2.0f44f0ce.chunk.js",
-    "static/css/main.0a4403dc.chunk.css",
+    "static/css/main.493897be.chunk.css",
     "static/js/main.791af653.chunk.js"
   ]
 }
