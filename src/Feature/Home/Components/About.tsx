@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Grid } from '@material-ui/core';
+import { Grid, Button } from '@mui/material';
 import { PageLocation } from '../../../shared/enums/PageLocation';
 import { HomeContext } from '../HomeContext';
 
-export function Welcome() {
+export function About() {
     const homeContext = React.useContext(HomeContext);
 
     return (

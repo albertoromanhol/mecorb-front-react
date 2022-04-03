@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { themeConfiguration } from './themeConfiguration';
 import { Routes } from './Routes';

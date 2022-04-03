@@ -1,7 +1,8 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createMuiTheme } from '@mui/material';
 
 export const themeConfiguration = createMuiTheme({
     palette: {
+        mode: 'dark',
         primary: {
             main: '#5e35b1',
         },
@@ -23,11 +24,11 @@ export const themeConfiguration = createMuiTheme({
         //     main: '#ffa800',
         //     dark: '#FF4D00',
         // },
-        text: {
-            primary: '#fff',
+        // text: {
+        //     primary: '#fff',
         //     secondary: '#424242',
         //     disabled: '#B6B6B6',
-        },
+        // },
         common: {
             black: '#0E0E0E',
             white: '#FFFFFF',
@@ -137,25 +138,25 @@ export const themeConfiguration = createMuiTheme({
             letterSpacing: '0.1rem'
         }
     },
-    overrides: {
-        MuiOutlinedInput: {
-            root: {
-                borderRadius: 8,
-            }
-        },
-        MuiButton: {
-            root: {
-                borderRadius: 8,
-            },
-            sizeLarge: {
-                padding: '10px 16px',
-                lineHeight: '20px'
-            }
-        },
-        MuiDivider: {
-            root: {
-                background: '#E6E6E6',
-            }
-        }
-    }
+    // overrides: {
+    //     MuiOutlinedInput: {
+    //         root: {
+    //             borderRadius: 12,
+    //         }
+    //     },
+    //     MuiButton: {
+    //         root: {
+    //             borderRadius: 12,
+    //         },
+    //         sizeLarge: {
+    //             padding: '10px 16px',
+    //             lineHeight: '20px'
+    //         }
+    //     },
+    //     MuiDivider: {
+    //         root: {
+    //             background: '#E6E6E6',
+    //         }
+    //     }
+    // }
 });

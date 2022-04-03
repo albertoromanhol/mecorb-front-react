@@ -12,8 +12,6 @@ interface IHomeItemProps {
 export function HomeItem({pageLocation, pageLocationList, children}: IHomeItemProps) {
     const homeContext = React.useContext(HomeContext);
 
-    React.useEffect(() => { console.log(pageLocation); }, []);
-
     return (
         <>
             { !!pageLocation && homeContext.pageLocation === pageLocation && 

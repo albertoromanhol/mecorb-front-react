@@ -1,39 +1,36 @@
 import React from 'react';
 
-import { makeStyles, createStyles } from '@material-ui/core';
-
 import { PageLocation } from '../../shared/enums/PageLocation';
 import { HomeItem } from './Components/HomeItem';
-import { Welcome } from './Components/Welcome';
+import { About } from './Components/About';
 import { HomeContext } from './HomeContext';
 import { Initial } from './Components/Initial';
-
-
-const useStyles = makeStyles(() => createStyles({
-    root: {
-        flexGrow: 1,
-        overflow: 'hidden',
-    }
-}));
-
+import { FirstSimulation } from '../FirstSimulation/View/FirstSimulation';
 
 export function Home() {
-    const classes = useStyles();
     
-    const [pageLocation, setPageLocation] = React.useState<PageLocation>(PageLocation.WELCOME);
+    const [pageLocation, setPageLocation] = React.useState<PageLocation>(PageLocation.INITAL);
 
     return (
-        <div className={classes.root}>
+        <div style={{
+            flexGrow: 1,
+            overflow: 'hidden',
+        }}>
             <HomeContext.Provider value={{
                 pageLocation, setPageLocation,
             }}>
-                <HomeItem pageLocation={PageLocation.WELCOME}>
-                    <Welcome />
-                </HomeItem>
-                
                 <HomeItem pageLocation={PageLocation.INITAL}>
                     <Initial />
                 </HomeItem>
+                
+                <HomeItem pageLocation={PageLocation.FIRST_SIMULATION}>
+                    <FirstSimulation />
+                </HomeItem>
+
+                <HomeItem pageLocation={PageLocation.ABOUT}>
+                    <About />
+                </HomeItem>
+                
             </HomeContext.Provider>
         </div>
     );
