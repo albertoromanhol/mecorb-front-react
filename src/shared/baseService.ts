@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 export default (route: string) => {
-
+    
     const create = (data: any) => axios.post(`/${route}`, data);
     const update = (data: any) => axios.put(`/${route}/${data.id}`, data);
     const getAll = () => axios.get(`/${route}`);    

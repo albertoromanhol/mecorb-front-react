@@ -10,59 +10,62 @@ import Uranus from '../Images/Uranus.jpg';
 import Neptune from '../Images/Neptune.jpg';
 
 export interface IPlanetProps {
+    id: number;
     name: string;
-    distance: string;
-    image: string;
-    selected: boolean;
+    namePTBR: string;
+    nasaHorizonBodyId: number;
+    mass: number;
+    radius: number;
+    ephemerities: any
 }
 
-export const PlanetList = [
-    {
-        name: 'Mercury',
-        distance: '0.4 AU',
-        image: Mercury,
-        selected: false
-    },
-    {
-        name: 'Venus',
-        distance: '0.7 AU',
-        image: Venus,
-        selected: false
-    },
-    {
-        name: 'Earth',
-        distance: '1 AU',
-        image: Earth,
-        selected: true
-    },
-    {
-        name: 'Mars',
-        distance: '1.5 AU',
-        image: Mars,
-        selected: false
-    },
-    {
-        name: 'Jupiter',
-        distance: '5.2 AU',
-        image: Jupiter,
-        selected: false
-    },
-    {
-        name: 'Saturn',
-        distance: '9.5 AU',
-        image: Saturn,
-        selected: false
-    },
-    {
-        name: 'Uranus',
-        distance: '19.2 AU',
-        image: Uranus,
-        selected: false
-    },
-    {
-        name: 'Neptune',
-        distance: '30.1 AU',
-        image: Neptune,
-        selected: false
-    },
-] as IPlanetProps[];
+// export const PlanetList = [
+//     {
+//         name: 'Mercury',
+//         distance: '0.4 AU',
+//         image: Mercury,
+//         selected: false
+//     },
+//     {
+//         name: 'Venus',
+//         distance: '0.7 AU',
+//         image: Venus,
+//         selected: false
+//     },
+//     {
+//         name: 'Earth',
+//         distance: '1 AU',
+//         image: Earth,
+//         selected: true
+//     },
+//     {
+//         name: 'Mars',
+//         distance: '1.5 AU',
+//         image: Mars,
+//         selected: false
+//     },
+//     {
+//         name: 'Jupiter',
+//         distance: '5.2 AU',
+//         image: Jupiter,
+//         selected: false
+//     },
+//     {
+//         name: 'Saturn',
+//         distance: '9.5 AU',
+//         image: Saturn,
+//         selected: false
+//     },
+//     {
+//         name: 'Uranus',
+//         distance: '19.2 AU',
+//         image: Uranus,
+//         selected: false
+//     },
+//     {
+//         name: 'Neptune',
+//         distance: '30.1 AU',
+//         image: Neptune,
+//         selected: false
+//     },
+// ] as IPlanetProps[];
