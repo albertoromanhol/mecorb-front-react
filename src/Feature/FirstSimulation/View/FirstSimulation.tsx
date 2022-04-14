@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Divider, Grid, LinearProgress, Typography } from '@mui/material';
+import { Grid, LinearProgress, Typography } from '@mui/material';
 import { themeConfiguration } from '../../../themeConfiguration';
 import { ShowPlanets } from '../Components/ShowPlanets';
 import PlanetService from '../../../Services/PlanetService';

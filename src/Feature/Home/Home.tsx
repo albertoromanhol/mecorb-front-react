@@ -6,6 +6,7 @@ import { About } from './Components/About';
 import { HomeContext } from './HomeContext';
 import { Initial } from './Components/Initial';
 import { FirstSimulation } from '../FirstSimulation/View/FirstSimulation';
+import { SimulationResult } from '../SimulationResult/View/SimulationResult';
 
 export function Home() {
     
@@ -26,6 +27,11 @@ export function Home() {
                 <HomeItem pageLocation={PageLocation.FIRST_SIMULATION}>
                     <FirstSimulation />
                 </HomeItem>
+
+                <HomeItem pageLocation={PageLocation.SECOND_SIMULATION}>
+                    <SimulationResult />
+                </HomeItem>
+
 
                 <HomeItem pageLocation={PageLocation.ABOUT}>
                     <About />

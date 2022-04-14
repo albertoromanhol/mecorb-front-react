@@ -16,7 +16,8 @@ export interface IPlanetProps {
     nasaHorizonBodyId: number;
     mass: number;
     radius: number;
-    ephemerities: any
+    ephemerities: any;
+    bodyTrajectory: any;
 }
 
 // export const PlanetList = [

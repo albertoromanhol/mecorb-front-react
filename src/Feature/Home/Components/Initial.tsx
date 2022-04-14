@@ -51,7 +51,7 @@ export function Initial() {
                         pageLocation = {PageLocation.FIRST_SIMULATION} />
                         
                     <ChooseButton 
-                        label='manobras impulsivas'
+                        label='simular sistema solar'
                         pageLocation = {PageLocation.SECOND_SIMULATION} />
                 </Grid>
             </Grid>
