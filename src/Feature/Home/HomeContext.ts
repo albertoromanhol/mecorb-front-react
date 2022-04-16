@@ -5,6 +5,9 @@ import { PageLocation } from '../../shared/enums/PageLocation';
 export interface IHomeContextProps {
     pageLocation: PageLocation,
     setPageLocation: (pageLocation: PageLocation) => void,
+    
+    openLoadingDialog: boolean,
+    setOpenLoadingDialog: (open: boolean) => void,
 
     simulationResult: ISimulationResult | null,
     setSimulationResult: (simulationResult: ISimulationResult | null) => void,
@@ -13,6 +16,9 @@ export interface IHomeContextProps {
 export const homeContextInitial: IHomeContextProps = {
     pageLocation: PageLocation.INITAL,
     setPageLocation: () => { ''; },
+
+    openLoadingDialog: false,
+    setOpenLoadingDialog: () => { ''; },
 
     simulationResult: null,
     setSimulationResult: () => { ''; },

@@ -52,7 +52,7 @@ export function SolarSystem() {
             simulationDays: simulationDays,
         } as ISimulationConfig;
 
-        // TODO: LOADING
+        homeContext.setOpenLoadingDialog(true);
         SimulationService
             .simulation()
             .create(simulationConfig)
@@ -64,7 +64,7 @@ export function SolarSystem() {
                 console.log(error);
                 alert('fail');
             })
-            .finally(() => { setLoading(false); });
+            .finally(() => {  homeContext.setOpenLoadingDialog(false); });
     };
 
     const SimulationButton = () => (

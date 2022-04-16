@@ -12,11 +12,13 @@ import { themeConfiguration } from '../../themeConfiguration';
 import { ISimulationResult } from '../../Models/SimulationResult';
 import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { LoadingDialog } from '../../shared/Components/LoadingDialog';
 
 
 export function Home() {
-    
     const [openDrawer, setOpenDrawer] = React.useState<boolean>(true);
+    const [openLoadingDialog, setOpenLoadingDialog] = React.useState<boolean>(false);
+
     const [pageLocation, setPageLocation] = React.useState<PageLocation>(PageLocation.INITAL);
     const [simulationResult, setSimulationResult] = React.useState<ISimulationResult | null>(null);
 
@@ -36,7 +38,8 @@ export function Home() {
         }}>
             <HomeContext.Provider value={{
                 pageLocation, setPageLocation,
-                simulationResult, setSimulationResult
+                simulationResult, setSimulationResult,
+                openLoadingDialog, setOpenLoadingDialog
             }}>
                 {!openDrawer && (
                     <IconButton
@@ -69,8 +72,8 @@ export function Home() {
                     <HomeItem pageLocation={PageLocation.ABOUT}>
                         <About />
                     </HomeItem>
-                
                 </div>
+                <LoadingDialog open={openLoadingDialog}/>
             </HomeContext.Provider>
         </div>
     );
