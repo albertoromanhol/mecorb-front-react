@@ -54,12 +54,12 @@ export function PlotResult({ planets }: IPlotResultProps) {
             alignItems="center"
             spacing={2}
             style={{ width: '100%'}}>
-            <Grid item xs={2}>
+            <Grid item xs={12} sm={2}>
                 <PlotConfig 
                     tridimensionalPlot={tridimensionalPlot}
                     setTridimensionalPlot={setTridimensionalPlot} />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={12} sm={10}>
                 <Plot
                     data={plotData as Data[]}
                     layout={{ title: 'Sistema Solar',
