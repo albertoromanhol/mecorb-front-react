@@ -3,6 +3,7 @@ export enum PageLocation {
     ABOUT,
     INITAL,
     WELCOME,
-    FIRST_SIMULATION,
-    SECOND_SIMULATION,
+    SOLAR_SYSTEM,
+    MANOUVERS,
+    SIMULATION_RESULT,
 }

@@ -43,12 +43,12 @@ export function About() {
             <Grid item xs={12}>
                 <Button 
                     fullWidth
-                    variant='contained' 
+                    variant='outlined' 
                     color='primary'
                     size='large'
-                    style={{textTransform: 'lowercase' }}
+                    style={{textTransform: 'lowercase', height: '10vh'}}
                     onClick={() => { homeContext.setPageLocation(PageLocation.INITAL); }}>
-                    <code>to start, press the button</code> 
+                    <code>tela inicial</code> 
                 </Button>
             </Grid>
         </Grid>
