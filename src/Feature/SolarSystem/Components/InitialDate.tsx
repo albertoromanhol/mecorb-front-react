@@ -13,7 +13,7 @@ export function InitialDate({ dateValue, setDateValue }: IInitialDateProps) {
     return (
         <Grid item xs={6} style={{ width: '100%' }}>
             <DateCalendar
-                label='Data de início'
+                label='Data de Início'
                 dateTime={dateValue} 
                 setDateTime={setDateValue} />
         </Grid>

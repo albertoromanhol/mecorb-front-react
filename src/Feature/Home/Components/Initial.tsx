@@ -45,7 +45,7 @@ export function Initial() {
                 </Grid>
                 <Grid item xs={12} style={{ width: '60%', textAlign: 'center'}}>
                     <Typography variant="body1">
-                        <code>Olá! Este simulador foi desenvolvido com o intuito de utilizar a Lei da Gravitação Universal para simular o movimento de um corpo celeste. Pode ser realizado simulações tanto do Sistema Solar, com quais planetas desejar. Bem como, a simulação de manobras orbitais (a ainda ser desenvolvido). <br/> Vamos nessa?</code>
+                        <code>Olá! Este simulador foi desenvolvido com o intuito de utilizar a Lei da Gravitação Universal para simular o movimento de corpos celestes. Podem ser realizadas, tanto simulações do Sistema Solar (com os planetas desejados), ou bem como, a simulações de manobras orbitais (em breve). <br/> Vamos nessa?</code>
                     </Typography>
                 </Grid>
             </Grid>

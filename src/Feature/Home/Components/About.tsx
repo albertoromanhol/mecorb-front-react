@@ -15,24 +15,24 @@ export function About() {
             spacing={2}
             style={{ minHeight: '100vh' }}>
             <Grid item xs={12}>
-                <code>desenvolvimento de um simulador de dinâmica orbital para fins educacionais</code>
+                <code>Desenvolvimento de um Simulador de Dinâmica Orbital Para Fins Educacionais</code>
             </Grid>
             
             <Grid item xs={12}>
             </Grid>
 
             <Grid item xs={12}>
-                <code>aluno: alberto romanhol moreira</code> 
+                <code>Aluno: Alberto Romanhol Moreira</code> 
             </Grid>
             <Grid item xs={12}>
-                <code>orientadora: maria cecília pereira de paula</code> 
+                <code>Orientadora: Maria Cecília Pereira de Paula</code> 
             </Grid>
             
             <Grid item xs={12}>
             </Grid>
 
             <Grid item xs={12}>
-                <code>universidade federal de minas gerais</code> 
+                <code>Universidade Federal de Minas Gerais</code> 
             </Grid>
 
             <Grid item xs={12}>

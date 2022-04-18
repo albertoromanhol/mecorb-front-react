@@ -14,7 +14,7 @@ export function SimulationDays({ simulationDays, setSimulationDays }: ISimulatio
     return (
         <Grid item xs={6} style={{ width: '100%' }}>
             <TextField
-                label="Dias de simulação"
+                label="Dias de Simulação"
                 type="number"
                 InputLabelProps={{
                     shrink: true,

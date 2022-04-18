@@ -56,7 +56,6 @@ export function SelectPlanets({ planets, planetsSelected, setPlanetsSelected }: 
                         ...newValue.filter((p) => p.name !== 'Sun'),
                     ]);
                 }}
-                disableCloseOnSelect
                 getOptionLabel={(option) => option.namePTBR}
                 renderOption={(props, option, { selected }) => (
                     <li {...props}>
@@ -80,7 +79,7 @@ export function SelectPlanets({ planets, planetsSelected, setPlanetsSelected }: 
                         />
                     ))
                 }
-                renderInput={(params) => <TextField {...params} label="Planetas" />}
+                renderInput={(params) => <TextField {...params} label="Corpos Celestes" />}
             />
         </Grid>
     );
