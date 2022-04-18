@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mecorb-front-react/static/css/main.493897be.chunk.css",
-    "main.js": "/mecorb-front-react/static/js/main.fbafefed.chunk.js",
-    "main.js.map": "/mecorb-front-react/static/js/main.fbafefed.chunk.js.map",
+    "main.js": "/mecorb-front-react/static/js/main.a0f15494.chunk.js",
+    "main.js.map": "/mecorb-front-react/static/js/main.a0f15494.chunk.js.map",
     "runtime-main.js": "/mecorb-front-react/static/js/runtime-main.d849f043.js",
     "runtime-main.js.map": "/mecorb-front-react/static/js/runtime-main.d849f043.js.map",
     "static/js/2.43ea23df.chunk.js": "/mecorb-front-react/static/js/2.43ea23df.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.d849f043.js",
     "static/js/2.43ea23df.chunk.js",
     "static/css/main.493897be.chunk.css",
-    "static/js/main.fbafefed.chunk.js"
+    "static/js/main.a0f15494.chunk.js"
   ]
 }
