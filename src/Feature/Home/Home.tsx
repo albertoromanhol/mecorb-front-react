@@ -13,7 +13,8 @@ import { ISimulationResult } from '../../Models/SimulationResult';
 import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { LoadingDialog } from '../../shared/Components/LoadingDialog';
-
+import { Manouvers } from '../Manouvers/Views/Manouvers';
+import { AlertDialog, createAlertProps } from '../../shared/Components/AlertDialog';
 
 export function Home() {
     const [openDrawer, setOpenDrawer] = React.useState<boolean>(true);
@@ -21,6 +22,8 @@ export function Home() {
 
     const [pageLocation, setPageLocation] = React.useState<PageLocation>(PageLocation.INITAL);
     const [simulationResult, setSimulationResult] = React.useState<ISimulationResult | null>(null);
+
+    const { alertProps, showError, showSuccess, showWarning } = createAlertProps();
 
     React.useEffect(() => { 
         if (openDrawer && pageLocation !== PageLocation.SIMULATION_RESULT)
@@ -39,7 +42,11 @@ export function Home() {
             <HomeContext.Provider value={{
                 pageLocation, setPageLocation,
                 simulationResult, setSimulationResult,
-                openLoadingDialog, setOpenLoadingDialog
+                openLoadingDialog, setOpenLoadingDialog,
+                alertProps,              
+                showError, 
+                showSuccess,
+                showWarning
             }}>
                 {!openDrawer && (
                     <IconButton
@@ -65,6 +72,10 @@ export function Home() {
                         <SolarSystem />
                     </HomeItem>
 
+                    <HomeItem pageLocation={PageLocation.MANOUVERS}>
+                        <Manouvers />
+                    </HomeItem>
+
                     <HomeItem pageLocation={PageLocation.SIMULATION_RESULT}>
                         <SimulationResult />
                     </HomeItem>
@@ -73,7 +84,15 @@ export function Home() {
                         <About />
                     </HomeItem>
                 </div>
+
                 <LoadingDialog open={openLoadingDialog}/>
+
+                <AlertDialog
+                    message={alertProps.message}
+                    onClose={alertProps.onClose}
+                    open={alertProps.open}
+                    severity={alertProps.severity}
+                />
             </HomeContext.Provider>
         </div>
     );

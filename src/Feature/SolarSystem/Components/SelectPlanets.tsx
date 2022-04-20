@@ -44,6 +44,7 @@ export function SelectPlanets({ planets, planetsSelected, setPlanetsSelected }: 
             <Autocomplete
                 multiple
                 fullWidth
+                disableCloseOnSelect
                 options={planets}
                 value={planetsSelected}
                 onChange={(_, newValue) => {
@@ -79,6 +80,7 @@ export function SelectPlanets({ planets, planetsSelected, setPlanetsSelected }: 
                         />
                     ))
                 }
+                noOptionsText="Nenhum corpo celeste encontrado!"
                 renderInput={(params) => <TextField {...params} label="Corpos Celestes" />}
             />
         </Grid>

@@ -2,6 +2,7 @@ import { IPlanet } from './Planet';
 
 export interface ISimulationConfig {
   planets: IPlanet[];
-  initialDay: Date | null;
+  initialDate: Date | null;
   simulationDays: number;
+  simulationSteps: number;
 }

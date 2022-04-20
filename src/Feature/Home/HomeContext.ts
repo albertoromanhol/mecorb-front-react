@@ -1,5 +1,7 @@
+import { AxiosError } from 'axios';
 import React from 'react';
 import { ISimulationResult } from '../../Models/SimulationResult';
+import { alertDialogPropsInitial, IAlertDialogProps } from '../../shared/Components/AlertDialog';
 import { PageLocation } from '../../shared/enums/PageLocation';
 
 export interface IHomeContextProps {
@@ -11,6 +13,11 @@ export interface IHomeContextProps {
 
     simulationResult: ISimulationResult | null,
     setSimulationResult: (simulationResult: ISimulationResult | null) => void,
+    
+    alertProps: IAlertDialogProps,
+    showError:  (error: AxiosError, message: string) => void,
+    showSuccess: (message: string) => void,
+    showWarning: (message: string) => void,
 }
 
 export const homeContextInitial: IHomeContextProps = {
@@ -22,6 +29,11 @@ export const homeContextInitial: IHomeContextProps = {
 
     simulationResult: null,
     setSimulationResult: () => { ''; },
+    
+    alertProps: alertDialogPropsInitial,
+    showError: () =>  { ''; },
+    showSuccess:  () =>  { ''; },
+    showWarning:  () =>  { ''; },
 };
 
 export const HomeContext = React.createContext(homeContextInitial);

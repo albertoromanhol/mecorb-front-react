@@ -11,7 +11,7 @@ interface IInitialDateProps {
 }
 export function InitialDate({ dateValue, setDateValue }: IInitialDateProps) {
     return (
-        <Grid item xs={6} style={{ width: '100%' }}>
+        <Grid item xs={12} md={4} style={{ width: '100%' }}>
             <DateCalendar
                 label='Data de Início'
                 dateTime={dateValue} 

@@ -1,3 +1,5 @@
+import { ITrajectory } from './Trajectory';
+
 export interface IPlanet {
   id: number;
   name: string;
@@ -5,6 +7,5 @@ export interface IPlanet {
   nasaHorizonBodyId: number;
   mass: number;
   radius: number;
-  ephemerities: any;
-  bodyTrajectory: any;
+  trajectory: ITrajectory;
 }

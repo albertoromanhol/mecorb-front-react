@@ -22,7 +22,6 @@ export function DrawerItensList() {
                         menuTitle='Sistema Solar'
                     />
                     <MenuItemComponent
-                        disabled
                         pageLocation={PageLocation.MANOUVERS}
                         menuTitle='Manobras'
                     />

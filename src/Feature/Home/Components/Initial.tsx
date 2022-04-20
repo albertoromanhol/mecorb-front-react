@@ -81,7 +81,6 @@ export function Initial() {
                         pageLocation = {PageLocation.SOLAR_SYSTEM} />
                         
                     <ChooseButton 
-                        disabled
                         label='manobras orbitais'
                         pageLocation = {PageLocation.MANOUVERS} />
                 </Grid>
