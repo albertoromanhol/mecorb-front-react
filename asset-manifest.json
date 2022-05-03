@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/mecorb-front-react/static/css/main.493897be.chunk.css",
-    "main.js": "/mecorb-front-react/static/js/main.c2044c62.chunk.js",
-    "main.js.map": "/mecorb-front-react/static/js/main.c2044c62.chunk.js.map",
+    "main.js": "/mecorb-front-react/static/js/main.a3f3983c.chunk.js",
+    "main.js.map": "/mecorb-front-react/static/js/main.a3f3983c.chunk.js.map",
     "runtime-main.js": "/mecorb-front-react/static/js/runtime-main.d849f043.js",
     "runtime-main.js.map": "/mecorb-front-react/static/js/runtime-main.d849f043.js.map",
-    "static/js/2.f504bbdf.chunk.js": "/mecorb-front-react/static/js/2.f504bbdf.chunk.js",
-    "static/js/2.f504bbdf.chunk.js.map": "/mecorb-front-react/static/js/2.f504bbdf.chunk.js.map",
+    "static/js/2.5164ed2f.chunk.js": "/mecorb-front-react/static/js/2.5164ed2f.chunk.js",
+    "static/js/2.5164ed2f.chunk.js.map": "/mecorb-front-react/static/js/2.5164ed2f.chunk.js.map",
     "index.html": "/mecorb-front-react/index.html",
     "static/css/main.493897be.chunk.css.map": "/mecorb-front-react/static/css/main.493897be.chunk.css.map",
-    "static/js/2.f504bbdf.chunk.js.LICENSE.txt": "/mecorb-front-react/static/js/2.f504bbdf.chunk.js.LICENSE.txt",
+    "static/js/2.5164ed2f.chunk.js.LICENSE.txt": "/mecorb-front-react/static/js/2.5164ed2f.chunk.js.LICENSE.txt",
     "static/media/SolarSystem.4a6c8bba.svg": "/mecorb-front-react/static/media/SolarSystem.4a6c8bba.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.d849f043.js",
-    "static/js/2.f504bbdf.chunk.js",
+    "static/js/2.5164ed2f.chunk.js",
     "static/css/main.493897be.chunk.css",
-    "static/js/main.c2044c62.chunk.js"
+    "static/js/main.a3f3983c.chunk.js"
   ]
 }
