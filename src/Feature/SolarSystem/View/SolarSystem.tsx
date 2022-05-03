@@ -6,7 +6,7 @@ import PlanetService from '../../../Services/PlanetService';
 import { IPlanet } from '../../../Models/Planet';
 import { PageHeader } from '../Components/PageHeader';
 import { InitialDate } from '../Components/InitialDate';
-import { SimulationNumbers } from '../Components/SimulationNumbers';
+import { SimulationNumbers } from '../../../shared/Components/SimulationNumbers';
 import { ISimulationConfig } from '../../../Models/SimulationConfig';
 import SimulationService from '../../../Services/SimulationService';
 import { HomeContext } from '../../Home/HomeContext';
@@ -115,14 +115,20 @@ export function SolarSystem() {
                         <InitialDate
                             dateValue={dateValue}
                             setDateValue={setDateValue} />
-                        <SimulationNumbers
-                            label="Dias de Simulação"
-                            simulationNumber={simulationDays}
-                            setSimulationNumber={setSimulationDays} />
-                        <SimulationNumbers
-                            label="Iterações"
-                            simulationNumber={simulationSteps}
-                            setSimulationNumber={setSimulationSteps} />
+
+                        <Grid item xs={12} md={4} style={{ width: '100%' }}>
+                            <SimulationNumbers
+                                label="Dias de Simulação"
+                                simulationNumber={simulationDays}
+                                setSimulationNumber={setSimulationDays} />
+                        </Grid>
+                        <Grid item xs={12} md={4} style={{ width: '100%' }}>
+                            <SimulationNumbers
+                                label="Iterações"
+                                simulationNumber={simulationSteps}
+                                setSimulationNumber={setSimulationSteps} />
+                        </Grid>
+                        
                         <SimulationButton />
 
                     </Grid>

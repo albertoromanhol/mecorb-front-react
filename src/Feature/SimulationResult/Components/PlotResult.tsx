@@ -17,7 +17,7 @@ export function PlotResult({ planets }: IPlotResultProps) {
     const { height, width } = useWindowDimensions();
 
     const [plotData, setPlotData] = React.useState<IPlotData[]>([]);
-    const [tridimensionalPlot, setTridimensionalPlot] = React.useState<boolean>(true);
+    const [tridimensionalPlot, setTridimensionalPlot] = React.useState<boolean>(false);
     const [maxTrajectoryValue, setMaxTrajectoryValue] = React.useState<number>(0);
 
     React.useEffect(() => { 

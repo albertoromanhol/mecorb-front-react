@@ -5,5 +5,6 @@ export enum PageLocation {
     WELCOME,
     SOLAR_SYSTEM,
     MANOUVERS,
+    HOHMANN,
     SIMULATION_RESULT,
 }

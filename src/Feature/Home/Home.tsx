@@ -72,7 +72,7 @@ export function Home() {
                         <SolarSystem />
                     </HomeItem>
 
-                    <HomeItem pageLocation={PageLocation.MANOUVERS}>
+                    <HomeItem pageLocationList={[PageLocation.MANOUVERS, PageLocation.HOHMANN]}>
                         <Manouvers />
                     </HomeItem>
 
