@@ -13,6 +13,9 @@ export interface IHomeContextProps {
 
     simulationResult: ISimulationResult | null,
     setSimulationResult: (simulationResult: ISimulationResult | null) => void,
+
+    isManouver: boolean,
+    setIsManouver: (isManouver: boolean) => void,
     
     alertProps: IAlertDialogProps,
     showError:  (error: AxiosError, message: string) => void,
@@ -29,6 +32,9 @@ export const homeContextInitial: IHomeContextProps = {
 
     simulationResult: null,
     setSimulationResult: () => { ''; },
+
+    isManouver: false,
+    setIsManouver: () => { ''; },
     
     alertProps: alertDialogPropsInitial,
     showError: () =>  { ''; },

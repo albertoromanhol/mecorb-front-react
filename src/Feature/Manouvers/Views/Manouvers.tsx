@@ -2,12 +2,14 @@ import { Button, Grid } from '@mui/material';
 import * as React from 'react';
 import { PageLocation } from '../../../shared/enums/PageLocation';
 import { HomeContext } from '../../Home/HomeContext';
+import { BiElliptic } from './BiElliptic/View/BiElliptic';
 import { Hohmann } from './Hohmann/View/Hohmann';
 
 export function Manouvers() {
     const homeContext = React.useContext(HomeContext);
 
     const hohmannManouver = homeContext.pageLocation === PageLocation.HOHMANN;
+    const biEllipticManouver = homeContext.pageLocation === PageLocation.BI_ELLIPTIC;
 
     const Initial = () => { 
         return (
@@ -35,14 +37,26 @@ export function Manouvers() {
                     </Button>
                 </Grid>
                 
+                <Grid item xs={12} style={{ width: '25%'}}>
+                    <Button 
+                        fullWidth
+                        variant='outlined' 
+                        color='primary'
+                        size='large'
+                        style={{ height: '15vh'}}
+                        onClick={() => homeContext.setPageLocation(PageLocation.BI_ELLIPTIC)}>
+                        <code>Bi-Elliptic</code> 
+                    </Button>
+                </Grid>
             </Grid>
         );
     };
 
     return (
         <>
-            {!hohmannManouver && <Initial />}
+            {!hohmannManouver && !biEllipticManouver && <Initial />}
             {hohmannManouver && <Hohmann />}
+            {biEllipticManouver && <BiElliptic />}
         </>
     );
 }

@@ -5,4 +5,7 @@ export interface IPlotData {
   mode: string,
   z?: number[],
   type?: string,
+  line?: {
+    dash: string
+  }
 }

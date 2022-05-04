@@ -12,12 +12,14 @@ import { themeConfiguration } from '../../../themeConfiguration';
 interface IMenuItemProps {
   menuTitle: string;
   pageLocation: PageLocation;
+  childPages?: PageLocation[],
   disabled?: boolean;
 }
 
 export function MenuItemComponent({
     menuTitle,
     pageLocation,
+    childPages,
     disabled = false,
 }: IMenuItemProps) {
     const homeContext = React.useContext(HomeContext);
@@ -29,7 +31,7 @@ export function MenuItemComponent({
     }, [homeContext.pageLocation]);
     
     const changeBackgroundColor = (color?: string) => {
-        if (homeContext.pageLocation === pageLocation) {
+        if (homeContext.pageLocation === pageLocation || (childPages && childPages.includes(homeContext.pageLocation))) {
             setBackgroundColor(themeConfiguration.palette.primary.main);
             return;
         }

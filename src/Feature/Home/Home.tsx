@@ -23,11 +23,15 @@ export function Home() {
     const [pageLocation, setPageLocation] = React.useState<PageLocation>(PageLocation.INITAL);
     const [simulationResult, setSimulationResult] = React.useState<ISimulationResult | null>(null);
 
+    const [isManouver, setIsManouver] = React.useState<boolean>(false);
+
     const { alertProps, showError, showSuccess, showWarning } = createAlertProps();
 
     React.useEffect(() => { 
-        if (openDrawer && pageLocation !== PageLocation.SIMULATION_RESULT)
+        if (openDrawer && pageLocation !== PageLocation.SIMULATION_RESULT) {
+            setIsManouver(false);
             return;
+        }
         
         if ((openDrawer && pageLocation === PageLocation.SIMULATION_RESULT) 
          || (!openDrawer && pageLocation !== PageLocation.SIMULATION_RESULT))
@@ -42,6 +46,7 @@ export function Home() {
             <HomeContext.Provider value={{
                 pageLocation, setPageLocation,
                 simulationResult, setSimulationResult,
+                isManouver, setIsManouver,
                 openLoadingDialog, setOpenLoadingDialog,
                 alertProps,              
                 showError, 
@@ -72,7 +77,7 @@ export function Home() {
                         <SolarSystem />
                     </HomeItem>
 
-                    <HomeItem pageLocationList={[PageLocation.MANOUVERS, PageLocation.HOHMANN]}>
+                    <HomeItem pageLocationList={[PageLocation.MANOUVERS, PageLocation.HOHMANN, PageLocation.BI_ELLIPTIC]}>
                         <Manouvers />
                     </HomeItem>
 

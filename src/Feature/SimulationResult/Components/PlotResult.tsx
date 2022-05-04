@@ -10,23 +10,53 @@ import useWindowDimensions from '../../../shared/operators';
 
 interface IPlotResultProps {
   planets: IPlanet[];
+  isManouver: boolean;
 }
 
-
-export function PlotResult({ planets }: IPlotResultProps) { 
+export function PlotResult({ planets, isManouver }: IPlotResultProps) { 
     const { height, width } = useWindowDimensions();
 
     const [plotData, setPlotData] = React.useState<IPlotData[]>([]);
     const [tridimensionalPlot, setTridimensionalPlot] = React.useState<boolean>(false);
     const [maxTrajectoryValue, setMaxTrajectoryValue] = React.useState<number>(0);
 
+    const EARTH_RADIUS = 6_378;
+    const SUN_RADIUS = 696_340;
+    
     React.useEffect(() => { 
         setPlanetsData();
-        setTrajectoryMaxValue();
     }, [planets, tridimensionalPlot]);
 
     const setPlanetsData = () => {
+        setTrajectoryMaxValue();
+
         const data = planets.map(planet => getPlanetData(planet));
+        if (!tridimensionalPlot) {
+            
+            const centerBodyRadius = isManouver ? EARTH_RADIUS : SUN_RADIUS;
+
+            const xCenterBody = [];
+            const yCenterBody = [];
+
+            for (let angle = 0; angle <= 360; angle++) {
+                const x = centerBodyRadius*Math.sin(Math.PI*angle/180);
+                const y = centerBodyRadius*Math.cos(Math.PI*angle/180);
+                
+                xCenterBody.push(x);
+                yCenterBody.push(y);
+            }
+            
+            const centerBody = {
+                x: xCenterBody,
+                y: yCenterBody,
+                mode: 'lines',
+                name:  isManouver ? 'Terra' : 'Sol',
+                fill: 'toself',
+            };
+
+            data[0] = centerBody;
+        
+        }
         setPlotData(data);
     };
 
@@ -46,7 +76,7 @@ export function PlotResult({ planets }: IPlotResultProps) {
 
             const absoluteMinValue = Math.abs(Math.min(minX, minY));
             
-            setMaxTrajectoryValue(Math.max(absoluteMaxValue, absoluteMinValue));
+            setMaxTrajectoryValue(Math.max(absoluteMaxValue, absoluteMinValue)*1.1);
         }
     };
 
@@ -58,6 +88,12 @@ export function PlotResult({ planets }: IPlotResultProps) {
             mode: 'lines',
         };
 
+        if (planet.namePTBR.includes('Transferência')) {
+            data.line = {
+                dash: 'dot',
+            };
+        }
+
         if (tridimensionalPlot) {
             data.z = planet.trajectory.z;
             data.type = 'scatter3d';
@@ -65,6 +101,8 @@ export function PlotResult({ planets }: IPlotResultProps) {
 
         return data;
     };
+
+    const manouverName = planets.length === 4 ? 'Manobra de Hohmann' : 'Manobra bielíptica';
 
     return (
         <Grid
@@ -75,18 +113,19 @@ export function PlotResult({ planets }: IPlotResultProps) {
             alignItems="center"
             spacing={2}
             style={{ width: '100%'}}>
+            {!isManouver && 
             <Grid item xs={12} sm={2}>
                 <PlotConfig 
                     tridimensionalPlot={tridimensionalPlot}
                     setTridimensionalPlot={setTridimensionalPlot} />
-            </Grid>
+            </Grid>}
             <Grid item xs={12} sm={10}>
                 <Plot
                     data={plotData as Data[]}
-                    layout={{ title: 'Sistema Solar',
+                    layout={{ title: isManouver ? manouverName : 'Sistema Solar',
                         autosize: false,
-                        width: 0.7 * width,
-                        height: 0.8 * height,
+                        width: isManouver ? 0.6 * width : 0.7 * width,
+                        height: isManouver ? 0.7 * height : 0.8 * height,
                         hovermode: 'closest',
                         dragmode: 'pan',
                         scene: {
