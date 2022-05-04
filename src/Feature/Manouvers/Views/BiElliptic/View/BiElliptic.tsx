@@ -8,6 +8,7 @@ import { HomeContext } from '../../../../Home/HomeContext';
 import { PageLocation } from '../../../../../shared/enums/PageLocation';
 import { SimulationNumbers } from '../../../../../shared/Components/SimulationNumbers';
 import { Orbit } from '../../Components/Orbit';
+import { ManouverPreview } from '../../Components/ManouverPreview';
 
 export function BiElliptic() {
     const homeContext = React.useContext(HomeContext);
@@ -23,7 +24,7 @@ export function BiElliptic() {
     });
 
     const [firstBiEllipseApogge, setFirstBiEllipseApogge] = React.useState<number>(210_000);
-
+    
     const startSimulation = () => {
         const manouverConfig: IManouverConfig = {
             initialOrbit,
@@ -59,51 +60,68 @@ export function BiElliptic() {
                 style={{ height: '7vh' }}>
                 SIMULAR
             </Button>
-            <Typography variant="overline" style={{ textAlign: 'center' }}>
-                <code>*TODO: Visualizar órbita antes de simular</code>
-            </Typography>
         </Grid>
     );
     return (
-        <Grid
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={5}
-            style={{ minHeight: '100vh' }}>
-            <PageHeader />
+        <>
+            <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={5}
+                style={{ minHeight: '75vh' }}>
+                <PageHeader />
 
-            <Grid item xs={12} style={{ width: '50%' }}>
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    spacing={3}>
-                    <Orbit
-                        orbit={initialOrbit}
-                        setOrbit={setInitialOrbit}
-                        label={'Orbita Inicial'}
-                    />
-
-                    <Orbit
-                        orbit={finalOrbit}
-                        setOrbit={setFinalOrbit}
-                        label={'Orbita Final'}
-                    />
-
-                    <Grid item xs={12} style={{ width: '100%' }}>
-                        <SimulationNumbers
-                            label="Apogeu da primeira elípse de transferência"
-                            simulationNumber={firstBiEllipseApogge}
-                            setSimulationNumber={setFirstBiEllipseApogge}
+                <Grid item xs={12} style={{ width: '50%' }}>
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="center"
+                        alignItems="center"
+                        spacing={3}>
+                        <Orbit
+                            orbit={initialOrbit}
+                            setOrbit={setInitialOrbit}
+                            label={'Orbita Inicial'}
                         />
-                    </Grid>
 
-                    <SimulationButton />
+                        <Orbit
+                            orbit={finalOrbit}
+                            setOrbit={setFinalOrbit}
+                            label={'Orbita Final'}
+                        />
+
+                        <Grid
+                            item xs={12}
+                            container
+                            direction="column"
+                            justifyContent="center"
+                            alignItems="center"
+                            spacing={2}>
+                            <Grid item xs={12}>
+                                <Typography variant="h6">
+                                    <code>Órbita de transferência</code>
+                                </Typography>
+                            </Grid>
+                            
+                            <Grid item xs={12} md={6} style={{ width: '100%' }}>
+                                <SimulationNumbers
+                                    label="Apogeu da primeira elípse de transferência"
+                                    simulationNumber={firstBiEllipseApogge}
+                                    setSimulationNumber={setFirstBiEllipseApogge}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <SimulationButton />
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+            <ManouverPreview
+                initialOrbit={initialOrbit}
+                finalOrbit={finalOrbit}
+            />
+        </>
     );
 }

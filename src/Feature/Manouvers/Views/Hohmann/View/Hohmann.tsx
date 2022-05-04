@@ -7,6 +7,7 @@ import { IManouverConfig } from '../../../../../Models/ManouverConfig';
 import ManouverService from '../../../../../Services/ManouverService';
 import { HomeContext } from '../../../../Home/HomeContext';
 import { PageLocation } from '../../../../../shared/enums/PageLocation';
+import { ManouverPreview } from '../../Components/ManouverPreview';
 
 
 export function Hohmann() {
@@ -60,38 +61,45 @@ export function Hohmann() {
         </Grid>
     );
     return (
-        <Grid
-            container
-            direction='column'
-            justifyContent='center'
-            alignItems='center'
-            spacing={5}
-            style={{ minHeight: '100vh' }}>
+        <>
+            <Grid
+                container
+                direction='column'
+                justifyContent='center'
+                alignItems='center'
+                spacing={5}
+                style={{ minHeight: '75vh' }}>
 
-            <PageHeader />
+                <PageHeader />
 
-            <Grid item xs={12} style={{ width: '50%' }}>	
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    spacing={3}>
+                <Grid item xs={6} style={{ width: '50%' }}>	
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="center"
+                        alignItems="center"
+                        spacing={3}>
 
-                    <Orbit 
-                        orbit={initialOrbit}
-                        setOrbit={setInitialOrbit} 
-                        label={'Orbita Inicial'} />
+                        <Orbit 
+                            orbit={initialOrbit}
+                            setOrbit={setInitialOrbit} 
+                            label={'Orbita Inicial'} />
                 
-                    <Orbit 
-                        orbit={finalOrbit}
-                        setOrbit={setFinalOrbit} 
-                        label={'Orbita Final'} />
+                        <Orbit 
+                            orbit={finalOrbit}
+                            setOrbit={setFinalOrbit} 
+                            label={'Orbita Final'} />
 
-                    <SimulationButton />
+                        <SimulationButton />
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+
+            <ManouverPreview
+                initialOrbit={initialOrbit}
+                finalOrbit={finalOrbit}
+            />
+        </>
     );
             
 }
