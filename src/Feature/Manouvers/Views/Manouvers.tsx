@@ -3,6 +3,7 @@ import * as React from 'react';
 import { PageLocation } from '../../../shared/enums/PageLocation';
 import { HomeContext } from '../../Home/HomeContext';
 import { BiElliptic } from './BiElliptic/View/BiElliptic';
+import { ComparationManouver } from './ComparationManouver/View/ComparationManouver';
 import { Hohmann } from './Hohmann/View/Hohmann';
 
 export function Manouvers() {
@@ -10,6 +11,9 @@ export function Manouvers() {
 
     const hohmannManouver = homeContext.pageLocation === PageLocation.HOHMANN;
     const biEllipticManouver = homeContext.pageLocation === PageLocation.BI_ELLIPTIC;
+    const comparationManouver = homeContext.pageLocation === PageLocation.COMPARATION_MANOUVER;
+
+    const notManouver = !hohmannManouver && !biEllipticManouver && !comparationManouver;
 
     const Initial = () => { 
         return (
@@ -25,10 +29,10 @@ export function Manouvers() {
                     <code>Selecione a manobra que deseja realizar :)</code> 
                 </Grid>
             
-                <Grid item xs={12} style={{ width: '25%'}}>
+                <Grid item xs={12} style={{ width: '30%'}}>
                     <Button 
                         fullWidth
-                        variant='outlined' 
+                        variant='contained' 
                         color='primary'
                         size='large'
                         style={{ height: '15vh'}}
@@ -37,15 +41,28 @@ export function Manouvers() {
                     </Button>
                 </Grid>
                 
-                <Grid item xs={12} style={{ width: '25%'}}>
+                <Grid item xs={12} style={{ width: '30%'}}>
                     <Button 
                         fullWidth
-                        variant='outlined' 
+                        variant='contained' 
                         color='primary'
                         size='large'
                         style={{ height: '15vh'}}
                         onClick={() => homeContext.setPageLocation(PageLocation.BI_ELLIPTIC)}>
                         <code>Bi-Elliptic</code> 
+                    </Button>
+                </Grid>
+                
+                
+                <Grid item xs={12} style={{ width: '30%'}}>
+                    <Button 
+                        fullWidth
+                        variant='contained' 
+                        color='primary'
+                        size='large'
+                        style={{ height: '15vh'}}
+                        onClick={() => homeContext.setPageLocation(PageLocation.COMPARATION_MANOUVER)}>
+                        <code>Comparação Hohmann e Bi-Elliptic</code> 
                     </Button>
                 </Grid>
             </Grid>
@@ -54,9 +71,10 @@ export function Manouvers() {
 
     return (
         <>
-            {!hohmannManouver && !biEllipticManouver && <Initial />}
+            {notManouver && <Initial />}
             {hohmannManouver && <Hohmann />}
             {biEllipticManouver && <BiElliptic />}
+            {comparationManouver && <ComparationManouver />}
         </>
     );
 }

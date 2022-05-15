@@ -7,5 +7,6 @@ export enum PageLocation {
     MANOUVERS,
     HOHMANN,
     BI_ELLIPTIC,
+    COMPARATION_MANOUVER,
     SIMULATION_RESULT,
 }

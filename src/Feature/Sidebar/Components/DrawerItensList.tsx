@@ -23,7 +23,7 @@ export function DrawerItensList() {
                     />
                     <MenuItemComponent
                         pageLocation={PageLocation.MANOUVERS}
-                        childPages={[PageLocation.HOHMANN, PageLocation.BI_ELLIPTIC]}
+                        childPages={[PageLocation.HOHMANN, PageLocation.BI_ELLIPTIC, PageLocation.COMPARATION_MANOUVER]}
                         menuTitle='Manobras'
                     />
 

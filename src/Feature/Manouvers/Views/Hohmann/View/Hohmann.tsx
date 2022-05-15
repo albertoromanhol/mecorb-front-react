@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { PageHeader } from '../Components/PageHeader';
 import { IOrbit } from '../../../../../Models/Orbit';
 import { Orbit } from '../../Components/Orbit';
@@ -41,7 +41,6 @@ export function Hohmann() {
                 homeContext.showError(error, 'Não foi possível realizar simulação');
             })
             .finally(() => {  homeContext.setOpenLoadingDialog(false); });
-        // call function 
     };
 
     const SimulationButton = () => (
@@ -49,15 +48,12 @@ export function Hohmann() {
             <Button
                 fullWidth
                 size="large"
-                variant="outlined"
+                variant="contained"
                 color="primary"
                 onClick={startSimulation}
                 style={{ height: '7vh' }}>
-                    SIMULAR
+                <code>SIMULAR</code>
             </Button>
-            <Typography variant="overline" style={{ textAlign: 'center'}}>
-                <code>*TODO: Visualizar órbita antes de simular</code>
-            </Typography>
         </Grid>
     );
     return (
@@ -68,7 +64,7 @@ export function Hohmann() {
                 justifyContent='center'
                 alignItems='center'
                 spacing={5}
-                style={{ minHeight: '75vh' }}>
+                style={{ minHeight: '100vh' }}>
 
                 <PageHeader />
 
@@ -93,12 +89,12 @@ export function Hohmann() {
                         <SimulationButton />
                     </Grid>
                 </Grid>
+                
+                <ManouverPreview
+                    initialOrbit={initialOrbit}
+                    finalOrbit={finalOrbit}
+                />
             </Grid>
-
-            <ManouverPreview
-                initialOrbit={initialOrbit}
-                finalOrbit={finalOrbit}
-            />
         </>
     );
             

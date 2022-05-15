@@ -6,8 +6,8 @@ import {
 
 interface ISimulationNumbersProps {
     label: string;
-    simulationNumber: number;
-    setSimulationNumber: (numbers: number) => void; 
+    simulationNumber: number | undefined;
+    setSimulationNumber: (numbers: number | undefined) => void; 
 }
 
 export function SimulationNumbers({ label, simulationNumber, setSimulationNumber }: ISimulationNumbersProps) {
@@ -19,9 +19,14 @@ export function SimulationNumbers({ label, simulationNumber, setSimulationNumber
                 shrink: true,
             }}
             fullWidth
-            value={simulationNumber}
+            value={simulationNumber ?? undefined}
             onChange={(e) => {
-                setSimulationNumber(Number(e.target.value));
+                let number = undefined;
+
+                if (e.target.value) 
+                    number = Number(e.target.value);
+
+                setSimulationNumber(number);
             }}
             variant="outlined"
         />

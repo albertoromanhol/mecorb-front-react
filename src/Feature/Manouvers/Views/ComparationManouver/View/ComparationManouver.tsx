@@ -10,7 +10,7 @@ import { SimulationNumbers } from '../../../../../shared/Components/SimulationNu
 import { Orbit } from '../../Components/Orbit';
 import { ManouverPreview } from '../../Components/ManouverPreview';
 
-export function BiElliptic() {
+export function ComparationManouver() {
     const homeContext = React.useContext(HomeContext);
 
     const [initialOrbit, setInitialOrbit] = React.useState<IOrbit>({
@@ -33,7 +33,7 @@ export function BiElliptic() {
         };
 
         homeContext.setOpenLoadingDialog(true);
-        ManouverService.biElliptic()
+        ManouverService.hohamannAndBiElliptic()
             .create(manouverConfig)
             .then((response) => {
                 homeContext.setSimulationResult(response.data);
@@ -46,7 +46,6 @@ export function BiElliptic() {
             .finally(() => {
                 homeContext.setOpenLoadingDialog(false);
             });
-    // call function
     };
 
     const SimulationButton = () => (
@@ -101,13 +100,13 @@ export function BiElliptic() {
                             spacing={2}>
                             <Grid item xs={12}>
                                 <Typography variant="h6">
-                                    <code>Órbita de transferência</code>
+                                    <code>Órbita de transferência - Bielíptica</code>
                                 </Typography>
                             </Grid>
                             
                             <Grid item xs={12} md={6} style={{ width: '100%' }}>
                                 <SimulationNumbers
-                                    label="Apogeu da primeira elípse de transferência"
+                                    label="Apogeu da primeira elípse de transferência bielíptica"
                                     simulationNumber={firstBiEllipseApogge}
                                     setSimulationNumber={setFirstBiEllipseApogge}
                                 />

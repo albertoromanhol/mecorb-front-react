@@ -20,8 +20,8 @@ export function SolarSystem() {
     const [planets, setPlanets] = React.useState<IPlanet[]>([]);
     const [planetsSelected, setPlanetsSelected] = React.useState<IPlanet[]>([]);
     const [dateValue, setDateValue] = React.useState<Date | null>(new Date());
-    const [simulationDays, setSimulationDays] = React.useState<number>(365);
-    const [simulationSteps, setSimulationSteps] = React.useState<number>(10_000);
+    const [simulationDays, setSimulationDays] = React.useState<number | undefined>(366);
+    const [simulationSteps, setSimulationSteps] = React.useState<number | undefined>(100_000);
 
     React.useEffect(() => {
         if (planets.length === 0) {
@@ -73,11 +73,11 @@ export function SolarSystem() {
             <Button
                 fullWidth
                 size="large"
-                variant="outlined"
+                variant="contained"
                 color="primary"
                 onClick={startSimulation}
                 style={{ height: '7vh' }}>
-                    SIMULAR
+                <code>SIMULAR</code>
             </Button>
         </Grid>
     );

@@ -1,6 +1,6 @@
 export interface IOrbit {
-  excentricity: number;
-  majorSemiAxis: number;
+  excentricity: number | undefined;
+  majorSemiAxis: number | undefined;
 }
 
 export const orbitInitialState: IOrbit = {

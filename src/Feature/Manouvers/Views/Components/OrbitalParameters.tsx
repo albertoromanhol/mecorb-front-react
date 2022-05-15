@@ -3,10 +3,10 @@ import * as React from 'react';
 import { SimulationNumbers } from '../../../../shared/Components/SimulationNumbers';
 
 interface IOrbitalParametersProps {
-    excentricity: number;
-    setExcentricity: (excentricity: number) => void;
-    majorSemiAxis: number;
-    setMajorSemiAxis: (majorSemiAxis: number) => void;
+    excentricity: number | undefined;
+    setExcentricity: (excentricity: number | undefined) => void;
+    majorSemiAxis: number | undefined;
+    setMajorSemiAxis: (majorSemiAxis: number | undefined) => void;
 }
 
 export function OrbitalParameters({ excentricity, setExcentricity, majorSemiAxis, setMajorSemiAxis }: IOrbitalParametersProps) {

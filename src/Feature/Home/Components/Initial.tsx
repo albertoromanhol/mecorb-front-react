@@ -18,7 +18,7 @@ export function Initial() {
                 <Button 
                     disabled={disabled}
                     fullWidth
-                    variant='outlined' 
+                    variant='contained' 
                     color='primary'
                     size='large'
                     style={{ height: '15vh'}}

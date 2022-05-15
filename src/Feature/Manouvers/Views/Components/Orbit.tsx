@@ -25,9 +25,9 @@ export function Orbit({ orbit, setOrbit, label } : IOrbitProps) {
             
             <OrbitalParameters
                 excentricity={orbit.excentricity}
-                setExcentricity={(excentricity: number) => setOrbit({ ...orbit, excentricity })}
+                setExcentricity={(excentricity: number | undefined) => setOrbit({ ...orbit, excentricity })}
                 majorSemiAxis={orbit.majorSemiAxis}
-                setMajorSemiAxis={(majorSemiAxis: number) => setOrbit({ ...orbit, majorSemiAxis })} />
+                setMajorSemiAxis={(majorSemiAxis: number | undefined) => setOrbit({ ...orbit, majorSemiAxis })} />
         </Grid>
     );
 }

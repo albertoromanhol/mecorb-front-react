@@ -49,7 +49,7 @@ export function MenuItemComponent({
             <Typography variant="subtitle1" style={{
                 verticalAlign: 'middle',
             }}>
-                {menuTitle}
+                <code>{menuTitle}</code>
             </Typography>
         );
     };

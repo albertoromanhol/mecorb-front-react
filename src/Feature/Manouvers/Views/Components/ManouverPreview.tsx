@@ -1,8 +1,11 @@
-import { Grid } from '@mui/material';
-import { Data } from 'plotly.js';
 import React from 'react';
+import { Button, Dialog, Grid, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { Data } from 'plotly.js';
 import Plot from 'react-plotly.js';
+
 import { IOrbit } from '../../../../Models/Orbit';
+import { themeConfiguration } from '../../../../themeConfiguration';
 
 interface IManouverPreviewProps {
   initialOrbit: IOrbit;
@@ -11,6 +14,8 @@ interface IManouverPreviewProps {
 
 export function ManouverPreview({ initialOrbit, finalOrbit }: IManouverPreviewProps) {
     const [plotOrbitsData, setPlotOrbitsData] = React.useState<IPlotOrbit[]>([]);
+
+    const [showModal, setShowModal] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         plotOrbits();
@@ -34,15 +39,16 @@ export function ManouverPreview({ initialOrbit, finalOrbit }: IManouverPreviewPr
       const mu = 398_600;
       const earthRadius = 6_378;
 
+      
       const orbit1 : IPlotOrbit = {
           name: 'Orbita inicial',
           mode: 'lines',
       };
       orbit1.x = [];
       orbit1.y = [];
-      orbit1.e = initialOrbit.excentricity,
-      orbit1.a = initialOrbit.majorSemiAxis,
-      orbit1.rp = orbit1.a * (1 - orbit1.e);
+      orbit1.e = initialOrbit.excentricity ?? 0,
+      orbit1.a = initialOrbit.majorSemiAxis ?? 0,
+      orbit1.rp =  orbit1.a * (1 - orbit1.e);
       orbit1.ra = 2 * orbit1.a - orbit1.rp;
       orbit1.h = Math.sqrt(orbit1.rp * mu * (1 + orbit1.e));
       
@@ -53,8 +59,8 @@ export function ManouverPreview({ initialOrbit, finalOrbit }: IManouverPreviewPr
       };
       orbit2.x = [];
       orbit2.y = [];
-      orbit2.e = finalOrbit.excentricity,
-      orbit2.a = finalOrbit.majorSemiAxis,
+      orbit2.e = finalOrbit.excentricity ?? 0,
+      orbit2.a = finalOrbit.majorSemiAxis ?? 0,
       orbit2.rp = orbit2.a * (1 - orbit2.e);
       orbit2.ra = 2 * orbit2.a - orbit2.rp;
       orbit2.h = Math.sqrt(orbit2.rp * mu * (1 + orbit2.e));
@@ -97,45 +103,77 @@ export function ManouverPreview({ initialOrbit, finalOrbit }: IManouverPreviewPr
 
   
   return (
-      <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          spacing={2}
-          style={{ marginBottom: '4rem', width: '100%'}}>
-          <Grid item xs={12}>
-              <Plot
-                  data={plotOrbitsData as Data[]}
-                  layout={{ title: 'Órbitas iniciais e finais',
-                      autosize: false,
-                      hovermode: 'closest',
-                      dragmode: 'pan',
-                      xaxis: {
-                          scaleratio: 1,
-                          title: {
-                              text: 'X [km]',
-                          },
-                      },
-                      yaxis: {
-                          scaleratio: 1,
-                          scaleanchor: 'x',
-                          title: {
-                              text: 'Y [km]',
-                          },
-                      },
-                  }}
-                  style={{
-                      margin: 'auto',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                  }}
-                  config={{
-                      displaylogo: false,
-                  }}
-              />
+      <>
+          <Grid item xs={12} style={{ width: '50%' }}>
+              <Button
+                  fullWidth
+                  size="large"
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => setShowModal(true)}
+                  style={{ height: '7vh' }}>
+                  <code>EXIBIR ORBITAS</code>
+              </Button>
           </Grid>
-      </Grid>
+
+          <Dialog 
+              onClose={() => setShowModal(false)} 
+              maxWidth='lg'
+              aria-labelledby="simple-dialog-title" 
+              PaperProps={{ style: { borderRadius: 16, padding: '12px', backgroundColor: '#Fff' } }}
+              open={showModal}>
+              <Grid
+                  container
+                  direction="row"
+                  justifyContent="end"
+                  alignItems="start"
+                  spacing={1}
+                  style={{ width: '100%'}}>
+                  <Grid item xs={8}>
+                      <Plot
+                          data={plotOrbitsData as Data[]}
+                          layout={{ title: 'Órbitas iniciais e finais',
+                              autosize: false,
+                              hovermode: 'closest',
+                              dragmode: 'pan',
+                              xaxis: {
+                                  scaleratio: 1,
+                                  title: {
+                                      text: 'X [km]',
+                                  },
+                              },
+                              yaxis: {
+                                  scaleratio: 1,
+                                  scaleanchor: 'x',
+                                  title: {
+                                      text: 'Y [km]',
+                                  },
+                              },
+                          }}
+                          style={{
+                              margin: 'auto',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                          }}
+                          config={{
+                              displaylogo: false,
+                          }}
+                      />
+                  </Grid>
+                  <Grid item xs={2} style={{
+                      textAlign: 'end',
+                      marginLeft: themeConfiguration.spacing(1),
+                  }}>
+                      <IconButton 
+                          color='primary'
+                          style={{ borderRadius: '16px' }}
+                          onClick={ () => setShowModal(false) }>
+                          <CloseIcon color="primary" />
+                      </IconButton>
+                  </Grid>
+              </Grid>
+          </Dialog>
+      </>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import { Data } from 'plotly.js';
 import Plot from 'react-plotly.js';
 
@@ -11,13 +11,14 @@ import useWindowDimensions from '../../../shared/operators';
 interface IPlotResultProps {
   planets: IPlanet[];
   isManouver: boolean;
+  collision?: string[]
 }
 
-export function PlotResult({ planets, isManouver }: IPlotResultProps) { 
+export function PlotResult({ planets, isManouver, collision }: IPlotResultProps) { 
     const { height, width } = useWindowDimensions();
 
     const [plotData, setPlotData] = React.useState<IPlotData[]>([]);
-    const [tridimensionalPlot, setTridimensionalPlot] = React.useState<boolean>(false);
+    const [tridimensionalPlot, setTridimensionalPlot] = React.useState<boolean>(isManouver ? false : true);
     const [maxTrajectoryValue, setMaxTrajectoryValue] = React.useState<number>(0);
 
     const EARTH_RADIUS = 6_378;
@@ -102,7 +103,8 @@ export function PlotResult({ planets, isManouver }: IPlotResultProps) {
         return data;
     };
 
-    const manouverName = planets.length === 4 ? 'Manobra de Hohmann' : 'Manobra bielíptica';
+    const compareOrBielipticText = planets.length === 6 ? 'Comparação Manobra de Hohmann e Bielíptica' : 'Manobra bielíptica';
+    const manouverName = planets.length === 4 ? 'Manobra de Hohmann' : compareOrBielipticText;
 
     return (
         <Grid
@@ -111,72 +113,80 @@ export function PlotResult({ planets, isManouver }: IPlotResultProps) {
             direction="row"
             justifyContent="center"
             alignItems="center"
-            spacing={2}
-            style={{ width: '100%'}}>
-            {!isManouver && 
-            <Grid item xs={12} sm={2}>
+            spacing={3}
+            style={{ height: '100%'}}>
+            <Grid item xs={12} sm={3}>
                 <PlotConfig 
+                    isManouver={isManouver}
+                    collision={collision}
                     tridimensionalPlot={tridimensionalPlot}
                     setTridimensionalPlot={setTridimensionalPlot} />
-            </Grid>}
-            <Grid item xs={12} sm={10}>
-                <Plot
-                    data={plotData as Data[]}
-                    layout={{ title: isManouver ? manouverName : 'Sistema Solar',
-                        autosize: false,
-                        width: isManouver ? 0.6 * width : 0.7 * width,
-                        height: isManouver ? 0.7 * height : 0.8 * height,
-                        hovermode: 'closest',
-                        dragmode: 'pan',
-                        scene: {
-                            aspectmode:'manual',
-                            aspectratio: {
-                                x: 2, 
-                                y: 2, 
-                                z: 0.1
-                            },
-                            camera: {
-                                center: {
-                                    x: 0, y: 0, z: -.3
+            </Grid>
+
+            <Grid item xs={12} sm={9}>
+                <Paper
+                    style= {{ 
+                        borderRadius: 16, 
+                        width: 0.6 * width * 1.05, 
+                        backgroundColor: '#fff' }}>
+                    <Plot
+                        data={plotData as Data[]}
+                        layout={{ title: isManouver ? manouverName : 'Sistema Solar',
+                            autosize: false,
+                            width: 0.6 * width,
+                            height:0.8 * height,
+                            hovermode: 'closest',
+                            dragmode: 'pan',
+                            scene: {
+                                aspectmode:'manual',
+                                aspectratio: {
+                                    x: 2, 
+                                    y: 2, 
+                                    z: 0.1
+                                },
+                                camera: {
+                                    center: {
+                                        x: 0, y: 0, z: -.3
+                                    }
+                                },
+                                xaxis: {
+                                    title: 'X [km]',
+                                    range: [-maxTrajectoryValue, maxTrajectoryValue]
+                                },
+                                yaxis: {
+                                    title: 'Y [km]',
+                                    range: [-maxTrajectoryValue, maxTrajectoryValue]
+                                },
+                                zaxis: {
+                                    nticks: 1,
+                                    title: 'Z [km]',
                                 }
                             },
                             xaxis: {
-                                title: 'X [km]',
-                                range: [-maxTrajectoryValue, maxTrajectoryValue]
+                                scaleratio: 1,
+                                title: {
+                                    text: 'X [km]',
+                                },
                             },
                             yaxis: {
-                                title: 'Y [km]',
-                                range: [-maxTrajectoryValue, maxTrajectoryValue]
+                                scaleratio: 1,
+                                scaleanchor: 'x',
+                                title: {
+                                    text: 'Y [km]',
+                                },
                             },
-                            zaxis: {
-                                nticks: 1,
-                                title: 'Z [km]',
-                            }
-                        },
-                        xaxis: {
-                            scaleratio: 1,
-                            title: {
-                                text: 'X [km]',
-                            },
-                        },
-                        yaxis: {
-                            scaleratio: 1,
-                            scaleanchor: 'x',
-                            title: {
-                                text: 'Y [km]',
-                            },
-                        },
-                    }}
-                    style={{
-                        margin: 'auto',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                    config={{
-                        displaylogo: false,
-                    }}
-                />
+                        }}
+                        style={{
+                            margin: 'auto',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                        config={{
+                            displaylogo: false,
+                        }}
+                    />
+                </Paper>
             </Grid>
         </Grid>
     );
