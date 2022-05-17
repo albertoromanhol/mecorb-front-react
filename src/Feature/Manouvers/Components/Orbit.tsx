@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Grid, Typography } from '@mui/material';
-import { IOrbit } from '../../../../Models/Orbit';
+import { IOrbit } from '../../../Models/Orbit';
 import { OrbitalParameters } from './OrbitalParameters';
 
 interface IOrbitProps {

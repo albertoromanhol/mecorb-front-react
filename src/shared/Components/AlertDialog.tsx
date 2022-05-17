@@ -98,7 +98,6 @@ export function AlertDialog({ open, onClose, severity, message }: IAlertDialogPr
         <Snackbar 
             open={open} 
             onClose={onClose} 
-            autoHideDuration={6000}
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
             <Alert 
                 variant="outlined" 

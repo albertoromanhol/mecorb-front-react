@@ -4,8 +4,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Data } from 'plotly.js';
 import Plot from 'react-plotly.js';
 
-import { IOrbit } from '../../../../Models/Orbit';
-import { themeConfiguration } from '../../../../themeConfiguration';
+import { IOrbit } from '../../../Models/Orbit';
+import { themeConfiguration } from '../../../themeConfiguration';
 
 interface IManouverPreviewProps {
   initialOrbit: IOrbit;

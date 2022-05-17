@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import * as React from 'react';
-import { SimulationNumbers } from '../../../../shared/Components/SimulationNumbers';
+import { SimulationNumbers } from '../../../shared/Components/SimulationNumbers';
 
 interface IOrbitalParametersProps {
     excentricity: number | undefined;

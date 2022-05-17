@@ -23,7 +23,7 @@ export function ManouverVelocities({ deltaV }: IManouverVelocitiesProps) {
                 {Object.keys(deltaV).map((value, index) => {
                     return (
                         <Typography variant="body1" key={`${value}-${index}`}>
-                            <code>{value ? `${value}: ${deltaV[value].toFixed(3)} ${value.includes('Combustível') ? 'kg' : 'km/s'} ` : '————'}</code>
+                            <code>{value ? `${value}: ${deltaV[value].toFixed(3)} ${value.includes('M') ? 'kg' : 'km/s'} ` : '————'}</code>
                         </Typography>
                     );
                 })}

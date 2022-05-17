@@ -2,9 +2,9 @@ import { Button, Grid } from '@mui/material';
 import * as React from 'react';
 import { PageLocation } from '../../../shared/enums/PageLocation';
 import { HomeContext } from '../../Home/HomeContext';
-import { BiElliptic } from './BiElliptic/View/BiElliptic';
-import { ComparationManouver } from './ComparationManouver/View/ComparationManouver';
-import { Hohmann } from './Hohmann/View/Hohmann';
+import { BiElliptic } from '../BiElliptic/View/BiElliptic';
+import { ComparationManouver } from '../ComparationManouver/View/ComparationManouver';
+import { Hohmann } from '../Hohmann/View/Hohmann';
 
 export function Manouvers() {
     const homeContext = React.useContext(HomeContext);

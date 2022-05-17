@@ -9,26 +9,6 @@ export const themeConfiguration = createMuiTheme({
         secondary: {
             main: '#00acc1',
         },
-        // success: {
-        //     light: '#E0FBC8',
-        //     main: '#59D134',
-        //     dark: '#1DB300',
-        // },
-        // error: {
-        //     light: '#FDDCD5',
-        //     main: '#E95F6D',
-        //     dark: '#BC214E',
-        // },
-        // warning: {
-        //     light: '#FFE9CC',
-        //     main: '#ffa800',
-        //     dark: '#FF4D00',
-        // },
-        // text: {
-        //     primary: '#fff',
-        //     secondary: '#424242',
-        //     disabled: '#B6B6B6',
-        // },
         common: {
             black: '#0E0E0E',
             white: '#FFFFFF',
@@ -138,25 +118,4 @@ export const themeConfiguration = createMuiTheme({
             letterSpacing: '0.1rem'
         }
     },
-    // overrides: {
-    //     MuiOutlinedInput: {
-    //         root: {
-    //             borderRadius: 12,
-    //         }
-    //     },
-    //     MuiButton: {
-    //         root: {
-    //             borderRadius: 12,
-    //         },
-    //         sizeLarge: {
-    //             padding: '10px 16px',
-    //             lineHeight: '20px'
-    //         }
-    //     },
-    //     MuiDivider: {
-    //         root: {
-    //             background: '#E6E6E6',
-    //         }
-    //     }
-    // }
 });
