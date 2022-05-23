@@ -100,7 +100,7 @@ export function AlertDialog({ open, onClose, severity, message }: IAlertDialogPr
             onClose={onClose} 
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
             <Alert 
-                variant="outlined" 
+                variant="filled" 
                 style={{
                     maxWidth: '350px',
                     border: '1px solid',
@@ -109,7 +109,7 @@ export function AlertDialog({ open, onClose, severity, message }: IAlertDialogPr
                 onClose={onClose} 
                 severity={severity} 
                 icon={<Icon className='material-icons-round' style={{ fontSize: '46px' }}>{getIcon()}</Icon>} >
-                <Typography variant="caption">
+                <Typography variant="body1">
                     {getMessage()}
                 </Typography>
             </Alert>
