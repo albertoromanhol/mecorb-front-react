@@ -9,27 +9,36 @@ import { PageLocation } from '../../../../shared/enums/PageLocation';
 import { SimulationNumbers } from '../../../../shared/Components/SimulationNumbers';
 import { Orbit } from '../../Components/Orbit';
 import { ManouverPreview } from '../../Components/ManouverPreview';
+import { ISpacecraft } from '../../../../Models/Spacecraft';
+import { Spacecraft } from '../../Components/Spacecraft';
 
 export function ComparationManouver() {
     const homeContext = React.useContext(HomeContext);
 
     const [initialOrbit, setInitialOrbit] = React.useState<IOrbit>({
         excentricity: 0,
-        majorSemiAxis: 7000,
+        majorSemiAxis: 10_000,
     });
 
     const [finalOrbit, setFinalOrbit] = React.useState<IOrbit>({
         excentricity: 0,
-        majorSemiAxis: 105_000,
+        majorSemiAxis: 50_000,
     });
 
-    const [firstBiEllipseApogge, setFirstBiEllipseApogge] = React.useState<number | undefined>(210_000);
+    const [firstBiEllipseApogge, setFirstBiEllipseApogge] = React.useState<number | undefined>(600_000);
+    
+    const [spacecraft, setSpacecraft] = React.useState<ISpacecraft>({
+        mass: 2000,
+        isp: 300,
+    });
+
     
     const startSimulation = () => {
         const manouverConfig: IManouverConfig = {
             initialOrbit,
             finalOrbit,
             firstBiEllipseApogge,
+            spacecraft
         };
 
         homeContext.setOpenLoadingDialog(true);
@@ -79,6 +88,9 @@ export function ComparationManouver() {
                         justifyContent="center"
                         alignItems="center"
                         spacing={3}>
+                            
+                        <Spacecraft spacecraft={spacecraft} setSpacecraft={setSpacecraft} />
+                        
                         <Orbit
                             orbit={initialOrbit}
                             setOrbit={setInitialOrbit}

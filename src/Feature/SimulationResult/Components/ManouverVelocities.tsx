@@ -21,9 +21,13 @@ export function ManouverVelocities({ deltaV }: IManouverVelocitiesProps) {
             </Grid>
             <Grid item xs={12} style={{ textAlign: 'center'}}>
                 {Object.keys(deltaV).map((value, index) => {
+                    const isMass = value.includes('M');
+                    const valueNumer = isMass ? deltaV[value].toFixed(1) : deltaV[value].toFixed(4);
+                    const valueUnit = isMass ? 'kg' : 'km/s';
+                    
                     return (
                         <Typography variant="body1" key={`${value}-${index}`}>
-                            <code>{value ? `${value}: ${deltaV[value].toFixed(3)} ${value.includes('M') ? 'kg' : 'km/s'} ` : '————'}</code>
+                            <code>{value ? `${value}: ${valueNumer}  ${valueUnit}` : '————'}</code>
                         </Typography>
                     );
                 })}

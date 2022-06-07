@@ -62,7 +62,7 @@ export function PlotResult({ planets, isManouver, collision }: IPlotResultProps)
     };
 
     const setTrajectoryMaxValue = () => {
-        const maxId = planets.reduce((max, planet) => planet.id > max ? planet.id : max, 0);
+        const maxId = planets.reduce((max, planet) => (planet.id > max && planet.id != 9) ? planet.id : max, 0);
 
         const planetIndex = planets.findIndex(planet => planet.id === maxId);
         

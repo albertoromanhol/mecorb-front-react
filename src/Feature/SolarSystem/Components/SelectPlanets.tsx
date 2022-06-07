@@ -35,8 +35,17 @@ export function SelectPlanets({ planets, planetsSelected, setPlanetsSelected }: 
     
             if (sun) listPlanetsSelected.push(sun);
         
-            setPlanetsSelected(listPlanetsSelected);
+            const m = planets.find((p) => p.name === 'Mercury');
+            const v = planets.find((p) => p.name === 'Venus');
+            const t = planets.find((p) => p.name === 'Earth');
+            const mt = planets.find((p) => p.name === 'Mars');
+            if (m) listPlanetsSelected.push(m);
+            if (v) listPlanetsSelected.push(v);
+            if (t) listPlanetsSelected.push(t);
+            if (mt) listPlanetsSelected.push(mt);
         }
+        
+        setPlanetsSelected(listPlanetsSelected);
     };
 
     return (

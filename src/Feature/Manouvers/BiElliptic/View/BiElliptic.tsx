@@ -9,6 +9,8 @@ import { PageLocation } from '../../../../shared/enums/PageLocation';
 import { SimulationNumbers } from '../../../../shared/Components/SimulationNumbers';
 import { Orbit } from '../../Components/Orbit';
 import { ManouverPreview } from '../../Components/ManouverPreview';
+import { Spacecraft } from '../../Components/Spacecraft';
+import { ISpacecraft } from '../../../../Models/Spacecraft';
 
 export function BiElliptic() {
     const homeContext = React.useContext(HomeContext);
@@ -23,6 +25,12 @@ export function BiElliptic() {
         majorSemiAxis: 105_000,
     });
 
+    const [spacecraft, setSpacecraft] = React.useState<ISpacecraft>({
+        mass: 2000,
+        isp: 300,
+    });
+
+
     const [firstBiEllipseApogge, setFirstBiEllipseApogge] = React.useState<number | undefined>(210_000);
     
     const startSimulation = () => {
@@ -30,6 +38,7 @@ export function BiElliptic() {
             initialOrbit,
             finalOrbit,
             firstBiEllipseApogge,
+            spacecraft
         };
 
         homeContext.setOpenLoadingDialog(true);
@@ -69,7 +78,7 @@ export function BiElliptic() {
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
-                spacing={5}
+                spacing={3}
                 style={{ minHeight: '100vh' }}>
                 <PageHeader />
 
@@ -80,6 +89,9 @@ export function BiElliptic() {
                         justifyContent="center"
                         alignItems="center"
                         spacing={3}>
+                            
+                        <Spacecraft spacecraft={spacecraft} setSpacecraft={setSpacecraft} />
+                        
                         <Orbit
                             orbit={initialOrbit}
                             setOrbit={setInitialOrbit}

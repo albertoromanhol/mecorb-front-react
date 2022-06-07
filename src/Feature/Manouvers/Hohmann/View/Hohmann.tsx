@@ -8,6 +8,8 @@ import ManouverService from  '../../../../Services/ManouverService';
 import { HomeContext } from  '../../../Home/HomeContext';
 import { PageLocation } from  '../../../../shared/enums/PageLocation';
 import { ManouverPreview } from '../../Components/ManouverPreview';
+import { Spacecraft } from '../../Components/Spacecraft';
+import { ISpacecraft } from '../../../../Models/Spacecraft';
 
 
 export function Hohmann() {
@@ -22,12 +24,18 @@ export function Hohmann() {
         majorSemiAxis: 22378,
     });
   
+    const [spacecraft, setSpacecraft] = React.useState<ISpacecraft>({
+        mass: 2000,
+        isp: 300,
+    });
+
     
     const startSimulation = () => {
         const manouverConfig: IManouverConfig = {
             initialOrbit,
             finalOrbit,
-            firstBiEllipseApogge: 0
+            firstBiEllipseApogge: 0,
+            spacecraft
         };
 
         homeContext.setOpenLoadingDialog(true);
@@ -75,6 +83,8 @@ export function Hohmann() {
                         justifyContent="center"
                         alignItems="center"
                         spacing={3}>
+
+                        <Spacecraft spacecraft={spacecraft} setSpacecraft={setSpacecraft} />
 
                         <Orbit 
                             orbit={initialOrbit}
